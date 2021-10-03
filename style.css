@@ -1,0 +1,72 @@
+/* By default, the width and height of an element is calculated like this:
+
+width + padding + border = actual width of an element
+height + padding + border = actual height of an element
+
+This means: When you set the width/height of an element, 
+the element often appears bigger than you have set
+(because the element's border and padding are added to the element's specified width/height). */
+/* ::before and ::after adds content/design before the content/design of selected elements. */
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FFC6);
+}
+
+.calculator-grid{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    /* 100vh will make sure it uses all the space vertically */
+    min-height:100vh;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows:minmax(120px, auto) repeat(5,100px); 
+}
+
+.calculator-grid>button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline:none;
+    background-color:rgba(255,255,255,.75);
+}
+
+.calculator-grid>button:hover{
+  
+    background-color:rgba(255,255,255,.90);
+}
+
+.span-two{
+    grid-column: span 2;
+}
+
+.output{
+    /* means take width of column 1 to entire column */
+    grid-column: 1 / -1;
+    background-color: rgba(0,0,0,.75);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+    /* break-word; break word from middle */
+    word-wrap: break-word;
+    /* break-all; break all word*/
+    word-break: break-all;
+    
+}
+
+.output .previous-operand{
+    color: rgba(255,255,255,.75);
+    font-size:1.5rem;
+}
+.output .current-operand{
+    color: rgba(255,255,255,.100);
+    font-size:2.5rem;
+}
